@@ -4,6 +4,7 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 
 import { shopRouter } from "./shop/routers/shop-router.js";
+import { cartRouter } from "./shop/routers/cart-router.js";
 
 import { errorMiddleware } from "./shared/middlewares/error-middleware.js";
 
@@ -27,6 +28,7 @@ app.get("/", (req: Request, res: Response) => {
   res.json({ message: "Flower Delivery API is running" });
 });
 app.use("/", shopRouter);
+app.use("/", cartRouter);
 
 const start = async () => {
   try {
