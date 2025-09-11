@@ -5,7 +5,7 @@ interface ShopItemDoc extends Document {
   name: string;
   price: number;
   itemImg: string;
-  category: string;
+  category: Types.ObjectId;
 }
 
 const ShopItemSchema = new Schema<ShopItemDoc>(
@@ -13,7 +13,11 @@ const ShopItemSchema = new Schema<ShopItemDoc>(
     name: { type: String, required: true },
     price: { type: Number, required: true },
     itemImg: { type: String, required: false },
-    category: { type: String, required: true },
+    category: {
+      type: Schema.Types.ObjectId,
+      ref: "ShopCategory",
+      required: true,
+    },
   },
   { timestamps: true },
 );
