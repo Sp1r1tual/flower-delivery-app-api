@@ -9,7 +9,7 @@ import { getNextOrderNumber } from "../utils/order/get-next-order-number.js";
 
 class CartService {
   async checkoutCart(data: CheckoutDataType) {
-    const { userName, email, phoneNumber, address, cart } = data;
+    const { userName, email, phoneNumber, address, cart, orderDate } = data;
 
     const productIds = cart.map((item) => item.productId);
     const products = await ShopItemModel.find({ _id: { $in: productIds } });
@@ -37,6 +37,7 @@ class CartService {
 
     const order = await OrderModel.create({
       orderNumber: nextOrderNumber,
+      orderDate,
       userName,
       email,
       phoneNumber,

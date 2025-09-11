@@ -9,6 +9,7 @@ type CheckoutDataType = {
   phoneNumber: string;
   address: string;
   cart: CartItemType[];
+  orderDate: string;
 };
 
 export type { CartItemType, CheckoutDataType };
