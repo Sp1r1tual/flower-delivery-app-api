@@ -15,10 +15,19 @@ class ShopController {
     }
   }
 
-  async getShopItems(req: Request, res: Response, next: NextFunction) {
+  async getAllItems(req: Request, res: Response, next: NextFunction) {
     try {
-      const categoryId = req.query.category as string | undefined;
-      const items = await shopService.getItems(categoryId);
+      const items = await shopService.getAllItems();
+      return res.json(items);
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  async getItemsByCategory(req: Request, res: Response, next: NextFunction) {
+    try {
+      const { categoryId } = req.params;
+      const items = await shopService.getItemsByCategory(categoryId);
 
       return res.json(items);
     } catch (error) {

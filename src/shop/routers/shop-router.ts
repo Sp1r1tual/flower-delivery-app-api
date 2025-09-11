@@ -7,6 +7,7 @@ const shopRouter = Router();
 const shopController = new ShopController();
 
 shopRouter.get("/categories", shopController.getShopCategories);
-shopRouter.get("/shop", shopController.getShopItems);
+shopRouter.get("/shop", shopController.getAllItems);
+shopRouter.get("/shop/category/:categoryId", shopController.getItemsByCategory);
 
 export { shopRouter };

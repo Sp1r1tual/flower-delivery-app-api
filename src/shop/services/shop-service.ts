@@ -1,3 +1,5 @@
+import { Types } from "mongoose";
+
 import { ShopCategoryModel } from "../models/shop-category-model.js";
 import { ShopItemModel } from "../models/shop-item-model.js";
 
@@ -14,14 +16,24 @@ class ShopService {
     return categories;
   }
 
-  async getItems(categoryId?: string) {
-    let filter = {};
+  async getAllItems() {
+    const items = await ShopItemModel.find().populate("category");
 
-    if (categoryId) {
-      filter = { category: categoryId };
+    if (!items) {
+      throw ApiError.NotFound("Items are not available");
     }
 
-    const items = await ShopItemModel.find(filter).populate("category");
+    return items;
+  }
+
+  async getItemsByCategory(categoryId: string) {
+    if (!Types.ObjectId.isValid(categoryId)) {
+      throw ApiError.BadRequest("Invalid category ID format");
+    }
+
+    const items = await ShopItemModel.find({
+      category: new Types.ObjectId(categoryId),
+    }).populate("category");
 
     if (!items) {
       throw ApiError.NotFound("Items are not available");
