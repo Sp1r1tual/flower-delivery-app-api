@@ -3,6 +3,10 @@ import cors from "cors";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 
+import { shopRouter } from "./shop/routers/shop-router.js";
+
+import { errorMiddleware } from "./shared/middlewares/error-middleware.js";
+
 dotenv.config();
 
 const PORT = process.env.PORT || 5000;
@@ -11,12 +15,18 @@ const DB_URL =
 
 const app = express();
 
-app.use(cors());
+app.use(
+  cors({
+    origin: process.env.CLIENT_URL,
+  }),
+);
 app.use(express.json());
+app.use(errorMiddleware);
 
 app.get("/", (req: Request, res: Response) => {
-  res.json({ message: "Flower Delivery API is running!" });
+  res.json({ message: "Flower Delivery API is running" });
 });
+app.use("/", shopRouter);
 
 const start = async () => {
   try {
