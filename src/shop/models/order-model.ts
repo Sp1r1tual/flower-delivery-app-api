@@ -19,7 +19,6 @@ const OrderSchema = new Schema(
       },
     ],
 
-    orderDate: { type: Date, required: true },
     totalPrice: { type: Number, required: true },
   },
   { timestamps: true },

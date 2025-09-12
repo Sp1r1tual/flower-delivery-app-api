@@ -4,12 +4,11 @@ type CartItemType = {
 };
 
 type CheckoutDataType = {
+  cart: CartItemType[];
   userName: string;
   email: string;
   phoneNumber: string;
   address: string;
-  cart: CartItemType[];
-  orderDate: string;
 };
 
 export type { CartItemType, CheckoutDataType };
