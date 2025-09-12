@@ -1,10 +1,9 @@
-import express, { Request, Response } from "express";
+import express from "express";
 import cors from "cors";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 
-import { shopRouter } from "./shop/routers/shop-router.js";
-import { cartRouter } from "./shop/routers/cart-router.js";
+import { router } from "./router.js";
 
 import { errorMiddleware } from "./shared/middlewares/error-middleware.js";
 
@@ -24,11 +23,7 @@ app.use(
 app.use(express.json());
 app.use(errorMiddleware);
 
-app.get("/", (req: Request, res: Response) => {
-  res.json({ message: "Flower Delivery API is running" });
-});
-app.use("/", shopRouter);
-app.use("/", cartRouter);
+router(app);
 
 const start = async () => {
   try {
