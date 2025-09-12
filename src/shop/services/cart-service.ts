@@ -45,7 +45,9 @@ class CartService {
       totalPrice,
     });
 
-    return order;
+    return {
+      orderNumber: order.orderNumber,
+    };
   }
 }
 
