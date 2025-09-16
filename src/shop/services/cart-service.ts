@@ -29,7 +29,7 @@ class CartService {
         name: product.name,
         price: product.price,
         quantity: item.quantity,
-        itemImg: product.itemImg,
+        imageUrl: product.imageUrl,
       };
     });
 

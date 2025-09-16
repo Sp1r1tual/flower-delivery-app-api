@@ -93,13 +93,11 @@ Retrieve all available product categories.
     "_id": "64fa7f1e6f1d2c0012345678",
     "name": "Roses",
     "createdAt": "2025-09-10T00:00:00.000Z",
-    "updatedAt": "2025-09-10T00:00:00.000Z"
-  },
-  {
-    "_id": "64fa7f1e6f1d2c0012345679",
-    "name": "Tulips",
-    "createdAt": "2025-09-10T00:00:00.000Z",
-    "updatedAt": "2025-09-10T00:00:00.000Z"
+    "updatedAt": "2025-09-10T00:00:00.000Z",
+    "location": {
+      "type": "Point",
+      "coordinates": [30.5234, 50.4501]
+    }
   }
 ]
 ```
@@ -123,9 +121,13 @@ Retrieve all products in the shop with populated category information.
     "price": 25,
     "category": {
       "_id": "64fa7f1e6f1d2c0012345678",
-      "name": "Roses"
+      "name": "Roses",
+      "location": {
+        "type": "Point",
+        "coordinates": [30.5234, 50.4501]
+      }
     },
-    "itemImg": "https://example.com/red-rose.jpg",
+    "imageUrl": "https://example.com/red-rose.jpg",
     "createdAt": "2025-09-10T00:00:00.000Z",
     "updatedAt": "2025-09-10T00:00:00.000Z"
   }
@@ -153,9 +155,13 @@ Retrieve products by specific category ID.
     "price": 25,
     "category": {
       "_id": "64fa7f1e6f1d2c0012345678",
-      "name": "Roses"
+      "name": "Roses",
+      "location": {
+        "type": "Point",
+        "coordinates": [30.5234, 50.4501]
+      }
     },
-    "itemImg": "https://example.com/red-rose.jpg",
+    "imageUrl": "https://example.com/red-rose.jpg",
     "createdAt": "2025-09-10T00:00:00.000Z",
     "updatedAt": "2025-09-10T00:00:00.000Z"
   }
@@ -188,7 +194,7 @@ Retrieve a single order by its order number.
       "name": "Red Rose",
       "price": 25,
       "quantity": 2,
-      "itemImg": "https://example.com/red-rose.jpg"
+      "imageUrl": "https://example.com/red-rose.jpg"
     }
   ],
   "totalPrice": 50
