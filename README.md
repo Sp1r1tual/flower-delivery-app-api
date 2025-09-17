@@ -111,27 +111,37 @@ Retrieve all available product categories.
 **Description:**  
 Retrieve all products in the shop with populated category information.
 
+**Params:**
+
+- `page` (number, optional, default: 1) — page number
+- `limit` (number, optional, default: 10) — items per page
+
 **Response:**
 
 ```json
-[
-  {
-    "_id": "64fa8a2e6f1d2c0012345670",
-    "name": "Red Rose",
-    "price": 25,
-    "category": {
-      "_id": "64fa7f1e6f1d2c0012345678",
-      "name": "Roses",
-      "location": {
-        "type": "Point",
-        "coordinates": [30.5234, 50.4501]
-      }
-    },
-    "imageUrl": "https://example.com/red-rose.jpg",
-    "createdAt": "2025-09-10T00:00:00.000Z",
-    "updatedAt": "2025-09-10T00:00:00.000Z"
-  }
-]
+{
+  "items": [
+    {
+      "_id": "64fa8a2e6f1d2c0012345670",
+      "name": "Red Rose",
+      "price": 25,
+      "category": {
+        "_id": "64fa7f1e6f1d2c0012345678",
+        "name": "Roses",
+        "location": {
+          "type": "Point",
+          "coordinates": [30.5234, 50.4501]
+        }
+      },
+      "imageUrl": "https://example.com/red-rose.jpg",
+      "createdAt": "2025-09-10T00:00:00.000Z",
+      "updatedAt": "2025-09-10T00:00:00.000Z"
+    }
+  ],
+  "total": 42,
+  "page": 2,
+  "totalPages": 5
+}
 ```
 
 ### **Shop Items by Category**
@@ -144,28 +154,35 @@ Retrieve products by specific category ID.
 **Params:**
 
 - `categoryId` (string) — MongoDB ObjectId of the category
+- `page` (number, optional, default: 1) — page number
+- `limit` (number, optional, default: 10) — items per page
 
 **Response:**
 
 ```json
-[
-  {
-    "_id": "64fa8a2e6f1d2c0012345670",
-    "name": "Red Rose",
-    "price": 25,
-    "category": {
-      "_id": "64fa7f1e6f1d2c0012345678",
-      "name": "Roses",
-      "location": {
-        "type": "Point",
-        "coordinates": [30.5234, 50.4501]
-      }
-    },
-    "imageUrl": "https://example.com/red-rose.jpg",
-    "createdAt": "2025-09-10T00:00:00.000Z",
-    "updatedAt": "2025-09-10T00:00:00.000Z"
-  }
-]
+{
+  "items": [
+    {
+      "_id": "64fa8a2e6f1d2c0012345670",
+      "name": "Red Rose",
+      "price": 25,
+      "category": {
+        "_id": "64fa7f1e6f1d2c0012345678",
+        "name": "Roses",
+        "location": {
+          "type": "Point",
+          "coordinates": [30.5234, 50.4501]
+        }
+      },
+      "imageUrl": "https://example.com/red-rose.jpg",
+      "createdAt": "2025-09-10T00:00:00.000Z",
+      "updatedAt": "2025-09-10T00:00:00.000Z"
+    }
+  ],
+  "total": 18,
+  "page": 1,
+  "totalPages": 2
+}
 ```
 
 ### **Get Order by Number**
