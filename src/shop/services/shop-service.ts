@@ -16,30 +16,53 @@ class ShopService {
     return categories;
   }
 
-  async getAllItems() {
-    const items = await ShopItemModel.find().populate("category");
+  async getAllItems(page: number, limit: number) {
+    const skip = (page - 1) * limit;
+
+    const [items, total] = await Promise.all([
+      ShopItemModel.find().populate("category").skip(skip).limit(limit),
+      ShopItemModel.countDocuments(),
+    ]);
 
     if (!items) {
       throw ApiError.NotFound("Items are not available");
     }
 
-    return items;
+    return {
+      items,
+      total,
+      page,
+      totalPages: Math.ceil(total / limit),
+    };
   }
 
-  async getItemsByCategory(categoryId: string) {
+  async getItemsByCategory(categoryId: string, page: number, limit: number) {
     if (!Types.ObjectId.isValid(categoryId)) {
       throw ApiError.BadRequest("Invalid category ID format");
     }
 
-    const items = await ShopItemModel.find({
-      category: new Types.ObjectId(categoryId),
-    }).populate("category");
+    const skip = (page - 1) * limit;
+
+    const [items, total] = await Promise.all([
+      ShopItemModel.find({ category: new Types.ObjectId(categoryId) })
+        .populate("category")
+        .skip(skip)
+        .limit(limit),
+      ShopItemModel.countDocuments({
+        category: new Types.ObjectId(categoryId),
+      }),
+    ]);
 
     if (!items) {
       throw ApiError.NotFound("Items are not available");
     }
 
-    return items;
+    return {
+      items,
+      total,
+      page,
+      totalPages: Math.ceil(total / limit),
+    };
   }
 }
 

@@ -17,8 +17,10 @@ class ShopController {
 
   async getAllItems(req: Request, res: Response, next: NextFunction) {
     try {
-      const items = await shopService.getAllItems();
-      return res.json(items);
+      const { page = "1", limit = "12" } = req.query;
+
+      const data = await shopService.getAllItems(Number(page), Number(limit));
+      return res.json(data);
     } catch (error) {
       next(error);
     }
@@ -27,9 +29,15 @@ class ShopController {
   async getItemsByCategory(req: Request, res: Response, next: NextFunction) {
     try {
       const { categoryId } = req.params;
-      const items = await shopService.getItemsByCategory(categoryId);
+      const { page = "1", limit = "12" } = req.query;
 
-      return res.json(items);
+      const data = await shopService.getItemsByCategory(
+        categoryId,
+        Number(page),
+        Number(limit),
+      );
+
+      return res.json(data);
     } catch (error) {
       next(error);
     }
