@@ -1,61 +1,26 @@
-# 🌸 Flower Delivery App (API)
+# Flower Delivery App (API)
 
-This is the **server-side application** for the Flower Delivery App, implemented as a **middle-level test task for ELIFTECH**.  
-The project is built with **Node.js**, **TypeScript**, and **Express**, using **MongoDB** as a database.
-
----
-
-## 🚀 Features
-
-- 🌐 REST API for product and order management
-- 🗄 MongoDB database integration via **Mongoose**
-- 🔄 CORS support for cross-origin requests
-- ✅ TypeScript for type safety
+This is the **server-side application** for the Flower Delivery App. The project is built with **Express** and **TypeScript** using **MongoDB** as a database.
 
 ---
 
-## 🛠 Tech Stack
+## Features
 
-- **Runtime:** Node.js
-- **Language:** TypeScript
-- **Framework:** Express 5
-- **Database:** MongoDB with Mongoose
-- **Environment Variables:** dotenv
-- **Code Quality:** ESLint + Prettier + Husky + lint-staged
-- **Development:** ts-node + nodemon
+- 🛒 Shop – browse products and categories
+- 🧺 Shopping Cart – add, remove, and update items
+- 📦 Order Info – view order details and order status
 
 ---
 
-## ⚙️ Scripts
+## Tech Stack
 
-| Command              | Description                           |
-| -------------------- | ------------------------------------- |
-| `npm run dev`        | Start development server with nodemon |
-| `npm run build`      | Compile TypeScript to JavaScript      |
-| `npm run start`      | Run production server from `dist`     |
-| `npm run lint`       | Run ESLint with auto-fix              |
-| `npm run lint:check` | Run ESLint without auto-fix           |
-| `npm run type-check` | Run TypeScript type checking          |
-| `npm run format`     | Format code with Prettier             |
+- Express
+- TypeScript
+- MongoDB (via Mongoose)
 
 ---
 
-## 🏗 Installation & Setup
-
-Clone the repository:
-
-```bash
-git clone https://github.com/Sp1r1tual/flower-delivery-app-api
-```
-
-Install and run the app in development mode:
-
-```bash
-npm install           # installs server deps
-npm run dev           # starts server
-```
-
-## 🌐 API Endpoints
+## API Endpoints
 
 The Flower Delivery API provides the following endpoints:
 
